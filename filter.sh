@@ -17,5 +17,10 @@ if [[ $NUM_CITIES == 500 ]]; then
 else
 	echo -e "... \033[31m Failed"
 fi
-	 
+
+cat $CITY_DATA
+JOBID=$(cat $REQUEST_BODY | \
+jq ".customerId = \"$SAPI_CUSTOMER_XID\"" | \
++curl -s -u $SAPI_USERNAME:$SAPI_PASSWORD $SAPI_SERVICE/v1/analyticsJobs \
+
 echo -e "\033[0m"
